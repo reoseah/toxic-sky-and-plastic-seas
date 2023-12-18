@@ -1,31 +1,31 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "toxsky",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Toxic Sky & Plastic Seas",
+	"description": "Atmosphere pollution and ocean plastic",
 	"authors": [
-		"Me!"
+		"Reoseah"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/reoseah/tox-sky-and-plastic-seas",
+		"sources": "https://github.com/reoseah/tox-sky-and-plastic-seas"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"license": "MIT",
+	"icon": "assets/toxsky/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+		  "io.github.reoseah.toxsky.ToxSky"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+		  "io.github.reoseah.toxsky.ToxSkyClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"toxsky.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "toxsky.client.mixins.json",
 			"environment": "client"
 		}
 	],
@@ -36,6 +36,5 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
 	}
 }
