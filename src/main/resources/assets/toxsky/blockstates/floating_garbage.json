@@ -1,0 +1,69 @@
+{
+  "variants": {
+	"": [
+	  {
+		"model": "toxsky:block/floating_garbage_1"
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_1",
+		"y": 90
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_1",
+		"y": 180
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_1",
+		"y": 270
+	  },
+
+	  {
+		"model": "toxsky:block/floating_garbage_2"
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_2",
+		"y": 90
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_2",
+		"y": 180
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_2",
+		"y": 270
+	  },
+
+	  {
+		"model": "toxsky:block/floating_garbage_3"
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_3",
+		"y": 90
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_3",
+		"y": 180
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_3",
+		"y": 270
+	  },
+
+	  {
+		"model": "toxsky:block/floating_garbage_4"
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_4",
+		"y": 90
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_4",
+		"y": 180
+	  },
+	  {
+		"model": "toxsky:block/floating_garbage_4",
+		"y": 270
+	  }
+	]
+  }
+}
