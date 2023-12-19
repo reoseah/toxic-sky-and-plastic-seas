@@ -1,5 +1,6 @@
 {
   "itemGroup.toxsky": "Toxic Sky & Plastic Seas",
   "block.toxsky.floating_garbage": "Floating Plastic Garbage",
+  "block.toxsky.garbage_block": "Block of Plastic Garbage",
   "item.toxsky.plastic_garbage": "Plastic Garbage"
 }
