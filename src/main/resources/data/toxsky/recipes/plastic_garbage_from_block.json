@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "toxsky:garbage_block"
+	}
+  ],
+  "result": {
+	"item": "toxsky:plastic_garbage",
+	"count": 9
+  }
+}
