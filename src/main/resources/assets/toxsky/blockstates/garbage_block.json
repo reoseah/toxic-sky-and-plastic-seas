@@ -2,16 +2,7 @@
   "variants": {
 	"": [
 	  {
-		"model": "toxsky:block/garbage_block_1"
-	  },
-	  {
-		"model": "toxsky:block/garbage_block_2"
-	  },
-	  {
-		"model": "toxsky:block/garbage_block_3"
-	  },
-	  {
-		"model": "toxsky:block/garbage_block_4"
+		"model": "toxsky:block/garbage_block"
 	  }
 	]
   }
