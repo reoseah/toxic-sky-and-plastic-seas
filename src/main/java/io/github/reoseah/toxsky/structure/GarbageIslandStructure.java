@@ -35,9 +35,9 @@ public class GarbageIslandStructure extends Structure {
         BlockPos pos = chunk.getBlockPos(0, context.chunkGenerator().getSeaLevel() - 1, 0);
 
         return Optional.of(new StructurePosition(pos, Either.left(builder -> {
-            StructurePiece start = new GarbageIslandCenterPiece(pos, random);
+            StructurePiece start = new GarbageIslandPiece(0, pos, random.split());
             builder.addPiece(start);
-            start.fillOpenings(start, builder, random);
+            start.fillOpenings(start, builder, random.split());
         })));
     }
 }
