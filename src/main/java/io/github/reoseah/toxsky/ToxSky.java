@@ -1,9 +1,15 @@
 package io.github.reoseah.toxsky;
 
+import io.github.reoseah.toxsky.block.FloatingGarbageBlock;
+import io.github.reoseah.toxsky.structure.GarbageIslandCenterPiece;
+import io.github.reoseah.toxsky.structure.GarbageIslandStructure;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
-import net.minecraft.item.*;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.PlaceableOnWaterItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -43,5 +49,10 @@ public class ToxSky implements ModInitializer {
                 .build();
 
         Registry.register(Registries.ITEM_GROUP, "toxsky:main", group);
+
+        Registry.register(Registries.STRUCTURE_TYPE, "toxsky:garbage_island", GarbageIslandStructure.TYPE);
+
+        Registry.register(Registries.STRUCTURE_PIECE, "toxsky:garbage_island_center", GarbageIslandCenterPiece.TYPE);
+
     }
 }

@@ -1,4 +1,4 @@
-package io.github.reoseah.toxsky;
+package io.github.reoseah.toxsky.block;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;

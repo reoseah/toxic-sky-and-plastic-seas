@@ -1,0 +1,14 @@
+{
+  "structures": [
+	{
+	  "structure": "toxsky:garbage_island",
+	  "weight": 1
+	}
+  ],
+  "placement": {
+	"type": "minecraft:random_spread",
+	"salt": 468495436,
+	"spacing": 16,
+	"separation": 4
+  }
+}

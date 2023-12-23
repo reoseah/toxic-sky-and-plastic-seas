@@ -1,0 +1,7 @@
+{
+  "type": "toxsky:garbage_island",
+  "biomes": "#toxsky:has_structure/garbage_island",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "none"
+}
