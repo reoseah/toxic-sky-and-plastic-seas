@@ -7,7 +7,7 @@ import net.minecraft.client.render.RenderLayer;
 public class ToxSkyClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(), //
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), //
                 ToxSky.FLOATING_GARBAGE);
     }
 }

@@ -1,6 +1,8 @@
 package io.github.reoseah.toxsky.structure;
 
 import io.github.reoseah.toxsky.ToxSky;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.structure.StructureContext;
 import net.minecraft.structure.StructurePiece;
@@ -12,6 +14,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
@@ -48,9 +51,9 @@ public class GarbageIslandPiece extends StructurePiece {
             BlockPos pos = this.getBoundingBox().getCenter();
 
             int distance = random.nextBetween(16, 24);
-
-            int x = pos.getX() + Math.round(MathHelper.cos(angle + random.nextFloat() / 2) * distance);
-            int z = pos.getZ() + Math.round(MathHelper.sin(angle + random.nextFloat() / 2) * distance);
+            float angleOffset = random.nextFloat() - 0.5F;
+            int x = pos.getX() + Math.round(MathHelper.cos(angle + angleOffset) * distance);
+            int z = pos.getZ() + Math.round(MathHelper.sin(angle + angleOffset) * distance);
             int y = pos.getY();
             BlockPos offset = new BlockPos(x, y, z);
             StructurePiece piece = new GarbageIslandPiece(this.chainLength + 1, offset, random.split());
@@ -58,6 +61,10 @@ public class GarbageIslandPiece extends StructurePiece {
             piece.fillOpenings(start, holder, random.split());
             angle += 2 * MathHelper.PI / count;
         }
+
+        StructurePiece piece = new FloatingGarbagePiece(this.chainLength + 1, this.getBoundingBox().getCenter(), random.split());
+        holder.addPiece(piece);
+        piece.fillOpenings(start, holder, random.split());
     }
 
     @Override
@@ -147,6 +154,11 @@ public class GarbageIslandPiece extends StructurePiece {
                 }
             }
         }
+    }
 
+    @Override
+    protected boolean canAddBlock(WorldView world, int x, int y, int z, BlockBox box) {
+        BlockState state = this.getBlockAt(world, x, y, z, box);
+        return state.isAir() || state.isReplaceable() || state.isOf(Blocks.WATER);
     }
 }
