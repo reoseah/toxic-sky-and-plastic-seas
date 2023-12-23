@@ -24,7 +24,7 @@ public class GarbageIslandPiece extends StructurePiece {
     protected final int seed;
 
     public GarbageIslandPiece(int generation, BlockPos pos, Random random) {
-        super(TYPE, generation, new BlockBox(pos).expand(8));
+        super(TYPE, generation, new BlockBox(pos).expand(generation == 0 ? 12 : 8));
         this.seed = random.nextInt();
     }
 
@@ -77,24 +77,26 @@ public class GarbageIslandPiece extends StructurePiece {
                          BlockPos pivot) {
         Random random = Random.create(this.seed);
 
-        int[][] map = new int[16][16];
-        map[8][8] = 1;
+        int size = this.getBoundingBox().getBlockCountX();
 
-        for (int i = 0; i < 200; i++) {
-            int x = random.nextInt(9) + random.nextInt(8);
-            int z = random.nextInt(9) + random.nextInt(8);
+        int[][] map = new int[size][size];
+        map[size / 2][size / 2] = 1;
+
+        for (int i = 0; i < (this.chainLength == 0 ? 500 : 200); i++) {
+            int x = random.nextInt(size / 2 + 1) + random.nextInt(size / 2);
+            int z = random.nextInt(size / 2 + 1) + random.nextInt(size / 2);
 
             int neighbors = 0;
             if (x > 0 && map[x - 1][z] == 1) {
                 neighbors++;
             }
-            if (x < 15 && map[x + 1][z] == 1) {
+            if (x < size - 1 && map[x + 1][z] == 1) {
                 neighbors++;
             }
             if (z > 0 && map[x][z - 1] == 1) {
                 neighbors++;
             }
-            if (z < 15 && map[x][z + 1] == 1) {
+            if (z < size - 1 && map[x][z + 1] == 1) {
                 neighbors++;
             }
             if (neighbors == 0 || neighbors == 4) {
@@ -103,11 +105,11 @@ public class GarbageIslandPiece extends StructurePiece {
             map[x][z] = 1;
         }
 
-        int[][] corners = new int[16][16];
-        int[][] floaties = new int[16][16];
+        int[][] corners = new int[size][size];
+        int[][] floaties = new int[size][size];
 
-        for (int x = 1; x < 15; x++) {
-            for (int z = 1; z < 15; z++) {
+        for (int x = 1; x < size - 1; x++) {
+            for (int z = 1; z < size - 1; z++) {
                 int orthogonalNeighbors = 0, diagonalNeighbors = 0;
                 for (int dx = -1; dx <= 1; dx++) {
                     for (int dz = -1; dz <= 1; dz++) {
@@ -136,14 +138,13 @@ public class GarbageIslandPiece extends StructurePiece {
                 }
             }
         }
-
-        for (int dx = 0; dx < 16; dx++) {
-            for (int dz = 0; dz < 16; dz++) {
-                BlockPos pos = new BlockPos( //
-                        this.getBoundingBox().getMinX(), //
-                        this.getBoundingBox().getCenter().getY(), //
-                        this.getBoundingBox().getMinZ() //
-                );
+        BlockPos pos = new BlockPos( //
+                this.getBoundingBox().getMinX(), //
+                this.getBoundingBox().getCenter().getY(), //
+                this.getBoundingBox().getMinZ() //
+        );
+        for (int dx = 0; dx < size; dx++) {
+            for (int dz = 0; dz < size; dz++) {
                 int x = pos.getX() + dx;
                 int z = pos.getZ() + dz;
                 int y = pos.getY();

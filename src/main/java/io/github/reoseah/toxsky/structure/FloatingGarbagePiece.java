@@ -54,6 +54,7 @@ public class FloatingGarbagePiece extends StructurePiece {
     @Override
     protected boolean canAddBlock(WorldView world, int x, int y, int z, BlockBox box) {
         BlockState state = this.getBlockAt(world, x, y, z, box);
-        return state.isAir() || state.isReplaceable() || state.isOf(Blocks.WATER);
+        BlockState floor = this.getBlockAt(world, x, y, z, box);
+        return state.isAir() || floor.isOf(Blocks.WATER);
     }
 }
