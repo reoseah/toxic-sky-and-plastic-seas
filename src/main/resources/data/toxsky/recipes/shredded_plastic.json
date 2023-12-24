@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+	{
+	  "item": "toxsky:plastic_garbage"
+	}
+  ],
+  "result": {
+	"item": "toxsky:shredded_plastic"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "ingredient": {
+	"item": "toxsky:shredded_plastic"
+  },
+  "result": "toxsky:recycled_plastic"
+}

@@ -1,6 +1,7 @@
 package io.github.reoseah.toxsky.structure;
 
 import io.github.reoseah.toxsky.ToxSky;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.nbt.NbtCompound;
@@ -149,7 +150,8 @@ public class GarbageIslandPiece extends StructurePiece {
                 int z = pos.getZ() + dz;
                 int y = pos.getY();
                 if (map[dx][dz] == 1 || corners[dx][dz] == 1) {
-                    this.addBlock(world, ToxSky.GARBAGE_BLOCK.getDefaultState(), x, y, z, chunkBox);
+                    Block block = random.nextInt(16) == 0 ? ToxSky.SEAWEED_GARBAGE_BLOCK : ToxSky.GARBAGE_BLOCK;
+                    this.addBlock(world, block.getDefaultState(), x, y, z, chunkBox);
                 } else if (floaties[dx][dz] == 1) {
                     this.addBlock(world, ToxSky.FLOATING_GARBAGE.getDefaultState(), x, y + 1, z, chunkBox);
                 }
