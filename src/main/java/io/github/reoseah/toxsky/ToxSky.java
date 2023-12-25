@@ -1,16 +1,14 @@
 package io.github.reoseah.toxsky;
 
 import io.github.reoseah.toxsky.block.FloatingGarbageBlock;
+import io.github.reoseah.toxsky.item.RecycledPlasticArmorItem;
 import io.github.reoseah.toxsky.structure.FloatingGarbagePiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandPiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandStructure;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PlaceableOnWaterItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -32,6 +30,8 @@ public class ToxSky implements ModInitializer {
     };
     public static final Item SHREDDED_PLASTIC = new Item(new Item.Settings());
     public static final Item RECYCLED_PLASTIC = new Item(new Item.Settings());
+    public static final Item RECYCLED_PLASTIC_HELMET = new RecycledPlasticArmorItem(ArmorItem.Type.HELMET, new Item.Settings());
+    public static final Item RECYCLED_PLASTIC_CHESTPLATE = new RecycledPlasticArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Settings());
 
     @Override
     public void onInitialize() {
@@ -46,6 +46,8 @@ public class ToxSky implements ModInitializer {
         Registry.register(Registries.ITEM, "toxsky:plastic_garbage", PLASTIC_GARBAGE);
         Registry.register(Registries.ITEM, "toxsky:shredded_plastic", SHREDDED_PLASTIC);
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic", RECYCLED_PLASTIC);
+        Registry.register(Registries.ITEM, "toxsky:recycled_plastic_helmet", RECYCLED_PLASTIC_HELMET);
+        Registry.register(Registries.ITEM, "toxsky:recycled_plastic_chestplate", RECYCLED_PLASTIC_CHESTPLATE);
 
         ItemGroup group = FabricItemGroup.builder() //
                 .displayName(Text.translatable("itemGroup.toxsky")) //
@@ -56,6 +58,8 @@ public class ToxSky implements ModInitializer {
                     entries.add(PLASTIC_GARBAGE);
                     entries.add(SHREDDED_PLASTIC);
                     entries.add(RECYCLED_PLASTIC);
+                    entries.add(RECYCLED_PLASTIC_HELMET);
+                    entries.add(RECYCLED_PLASTIC_CHESTPLATE);
                 }) //
                 .build();
 

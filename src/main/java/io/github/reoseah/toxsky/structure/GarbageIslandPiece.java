@@ -4,7 +4,9 @@ import io.github.reoseah.toxsky.ToxSky;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HangingRootsBlock;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.state.property.Properties;
 import net.minecraft.structure.StructureContext;
 import net.minecraft.structure.StructurePiece;
 import net.minecraft.structure.StructurePieceType;
@@ -83,7 +85,7 @@ public class GarbageIslandPiece extends StructurePiece {
         int[][] map = new int[size][size];
         map[size / 2][size / 2] = 1;
 
-        for (int i = 0; i < (this.chainLength == 0 ? 500 : 200); i++) {
+        for (int i = 0; i < (this.chainLength == 0 ? 800 : 200); i++) {
             int x = random.nextInt(size / 2 + 1) + random.nextInt(size / 2);
             int z = random.nextInt(size / 2 + 1) + random.nextInt(size / 2);
 
@@ -150,8 +152,11 @@ public class GarbageIslandPiece extends StructurePiece {
                 int z = pos.getZ() + dz;
                 int y = pos.getY();
                 if (map[dx][dz] == 1 || corners[dx][dz] == 1) {
-                    Block block = random.nextInt(16) == 0 ? ToxSky.SEAWEED_GARBAGE_BLOCK : ToxSky.GARBAGE_BLOCK;
+                    Block block = random.nextInt(8) == 0 ? ToxSky.SEAWEED_GARBAGE_BLOCK : ToxSky.GARBAGE_BLOCK;
                     this.addBlock(world, block.getDefaultState(), x, y, z, chunkBox);
+                    if (random.nextInt(16) == 0) {
+                        this.addBlock(world, Blocks.HANGING_ROOTS.getDefaultState().with(Properties.WATERLOGGED, true), x, y - 1, z, chunkBox);
+                    }
                 } else if (floaties[dx][dz] == 1) {
                     this.addBlock(world, ToxSky.FLOATING_GARBAGE.getDefaultState(), x, y + 1, z, chunkBox);
                 }

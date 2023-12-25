@@ -2,8 +2,10 @@
   "itemGroup.toxsky": "Toxic Sky & Plastic Seas",
   "block.toxsky.floating_garbage": "Floating Plastic Garbage",
   "block.toxsky.garbage_block": "Block of Plastic Garbage",
-  "block.toxsky.seaweed_garbage_block": "Seaweed Covered Plastic Garbage",
+  "block.toxsky.seaweed_garbage_block": "Seaweed Covered Block of Plastic Garbage",
   "item.toxsky.plastic_garbage": "Plastic Garbage",
   "item.toxsky.shredded_plastic": "Shredded Plastic",
-  "item.toxsky.recycled_plastic": "Recycled Plastic"
+  "item.toxsky.recycled_plastic": "Recycled Plastic",
+  "item.toxsky.recycled_plastic_helmet": "Recycled Plastic Helmet",
+  "item.toxsky.recycled_plastic_chestplate": "Recycled Plastic Chestplate"
 }

@@ -31,13 +31,14 @@ repositories {
 loom {
     splitEnvironmentSourceSets()
 
+	accessWidenerPath = file("src/main/resources/toxsky.accesswidener")
+
 	mods {
-		"modid" {
+		"toxsky" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
 	}
-
 }
 
 dependencies {

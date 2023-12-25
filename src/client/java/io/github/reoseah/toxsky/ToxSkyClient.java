@@ -9,5 +9,6 @@ public class ToxSkyClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), //
                 ToxSky.FLOATING_GARBAGE);
+
     }
 }

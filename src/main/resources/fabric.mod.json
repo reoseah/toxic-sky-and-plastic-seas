@@ -3,7 +3,7 @@
 	"id": "toxsky",
 	"version": "${version}",
 	"name": "Toxic Sky & Plastic Seas",
-	"description": "Civilisation disappeared, its legacy continues to haunt the world.",
+	"description": "Civilisation disappeared, its poisonous legacy continues to haunt the world.",
 	"authors": [
 		"Reoseah"
 	],
@@ -29,6 +29,7 @@
 			"environment": "client"
 		}
 	],
+  "accessWidener" : "toxsky.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.0",
 		"minecraft": "~1.20.4",
