@@ -1,0 +1,14 @@
+{
+  "structures": [
+	{
+	  "structure": "toxsky:acid_pool",
+	  "weight": 1
+	}
+  ],
+  "placement": {
+	"type": "minecraft:random_spread",
+	"salt": 432326004,
+	"spacing": 4,
+	"separation": 1
+  }
+}
