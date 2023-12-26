@@ -4,8 +4,8 @@ import io.github.reoseah.toxsky.ToxSky;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.HangingRootsBlock;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.state.property.Properties;
 import net.minecraft.structure.StructureContext;
 import net.minecraft.structure.StructurePiece;
@@ -74,7 +74,7 @@ public class GarbageIslandPiece extends StructurePiece {
     public void generate(StructureWorldAccess world, //
                          StructureAccessor structures, //
                          ChunkGenerator chunkGenerator, //
-                         Random r, //
+                         Random chunkRandom, //
                          BlockBox chunkBox, //
                          ChunkPos chunkPos, //
                          BlockPos pivot) {
@@ -167,6 +167,7 @@ public class GarbageIslandPiece extends StructurePiece {
     @Override
     protected boolean canAddBlock(WorldView world, int x, int y, int z, BlockBox box) {
         BlockState state = this.getBlockAt(world, x, y, z, box);
-        return state.isAir() || state.isReplaceable() || state.isOf(Blocks.WATER);
+        return (state.isAir() || state.isReplaceable() || state.isOf(Blocks.WATER)) //
+                && !state.isIn(BlockTags.FEATURES_CANNOT_REPLACE);
     }
 }

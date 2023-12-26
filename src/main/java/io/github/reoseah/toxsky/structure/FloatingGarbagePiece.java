@@ -37,7 +37,15 @@ public class FloatingGarbagePiece extends StructurePiece {
     }
 
     @Override
-    public void generate(StructureWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox chunkBox, ChunkPos chunkPos, BlockPos pivot) {
+    public void generate(StructureWorldAccess world, //
+                         StructureAccessor structureAccessor, //
+                         ChunkGenerator chunkGenerator, //
+                         Random chunkRandom, //
+                         BlockBox chunkBox, //
+                         ChunkPos chunkPos, //
+                         BlockPos pivot) {
+        Random random = Random.create(this.seed);
+
         BlockPos center = this.getBoundingBox().getCenter();
         int y = center.getY() + 1;
         for (int i = 0; i < 100; i++) {
