@@ -1,7 +1,0 @@
-{
-  "type": "toxsky:acid_pool",
-  "biomes": "#toxsky:has_structure/acid_pool",
-  "step": "surface_structures",
-  "spawn_overrides": {},
-  "terrain_adaptation": "none"
-}
