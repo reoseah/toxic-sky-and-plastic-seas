@@ -32,6 +32,8 @@ public class ToxSky implements ModInitializer {
     public static final Item RECYCLED_PLASTIC = new Item(new Item.Settings());
     public static final Item RECYCLED_PLASTIC_HELMET = new RecycledPlasticArmorItem(ArmorItem.Type.HELMET, new Item.Settings());
     public static final Item RECYCLED_PLASTIC_CHESTPLATE = new RecycledPlasticArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Settings());
+    public static final Item RECYCLED_PLASTIC_LEGGINGS = new RecycledPlasticArmorItem(ArmorItem.Type.LEGGINGS, new Item.Settings());
+    public static final Item RECYCLED_PLASTIC_BOOTS = new RecycledPlasticArmorItem(ArmorItem.Type.BOOTS, new Item.Settings());
 
     @Override
     public void onInitialize() {
@@ -48,6 +50,8 @@ public class ToxSky implements ModInitializer {
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic", RECYCLED_PLASTIC);
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic_helmet", RECYCLED_PLASTIC_HELMET);
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic_chestplate", RECYCLED_PLASTIC_CHESTPLATE);
+        Registry.register(Registries.ITEM, "toxsky:recycled_plastic_leggings", RECYCLED_PLASTIC_LEGGINGS);
+        Registry.register(Registries.ITEM, "toxsky:recycled_plastic_boots", RECYCLED_PLASTIC_BOOTS);
 
         ItemGroup group = FabricItemGroup.builder() //
                 .displayName(Text.translatable("itemGroup.toxsky")) //
@@ -60,6 +64,8 @@ public class ToxSky implements ModInitializer {
                     entries.add(RECYCLED_PLASTIC);
                     entries.add(RECYCLED_PLASTIC_HELMET);
                     entries.add(RECYCLED_PLASTIC_CHESTPLATE);
+                    entries.add(RECYCLED_PLASTIC_LEGGINGS);
+                    entries.add(RECYCLED_PLASTIC_BOOTS);
                 }) //
                 .build();
 

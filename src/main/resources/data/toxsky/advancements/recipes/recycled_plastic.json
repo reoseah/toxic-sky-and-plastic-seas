@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-	"has_garbage_block": {
+	"has_garbage": {
 	  "conditions": {
 		"items": [
 		  {
 			"items": [
-			  "toxsky:garbage_block"
+			  "toxsky:shredded_plastic"
 			]
 		  }
 		]
@@ -15,20 +15,20 @@
 	},
 	"has_the_recipe": {
 	  "conditions": {
-		"recipe": "toxsky:plastic_garbage_from_block"
+		"recipe": "toxsky:recycled_plastic"
 	  },
 	  "trigger": "minecraft:recipe_unlocked"
 	}
   },
   "requirements": [
 	[
-	  "has_garbage_block",
+	  "has_garbage",
 	  "has_the_recipe"
 	]
   ],
   "rewards": {
 	"recipes": [
-	  "toxsky:plastic_garbage_from_block"
+	  "toxsky:recycled_plastic"
 	]
   }
 }

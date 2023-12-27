@@ -6,7 +6,7 @@
 		"items": [
 		  {
 			"items": [
-			  "toxsky:garbage_block"
+			  "toxsky:seaweed_garbage_block"
 			]
 		  }
 		]
@@ -15,7 +15,7 @@
 	},
 	"has_the_recipe": {
 	  "conditions": {
-		"recipe": "toxsky:plastic_garbage_from_block"
+		"recipe": "toxsky:kelp_from_seaweed_garbage_block"
 	  },
 	  "trigger": "minecraft:recipe_unlocked"
 	}
@@ -28,7 +28,7 @@
   ],
   "rewards": {
 	"recipes": [
-	  "toxsky:plastic_garbage_from_block"
+	  "toxsky:kelp_from_seaweed_garbage_block"
 	]
   }
 }
