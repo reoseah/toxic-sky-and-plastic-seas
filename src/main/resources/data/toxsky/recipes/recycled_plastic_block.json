@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+	"###",
+	"###",
+	"###"
+  ],
+  "key": {
+	"#": {
+	  "item": "toxsky:recycled_plastic"
+	}
+  },
+  "result": {
+	"item": "toxsky:recycled_plastic_block"
+  }
+}

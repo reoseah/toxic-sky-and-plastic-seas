@@ -1,12 +1,6 @@
 {
-  "parent": "block/cube",
+  "parent": "block/cube_all",
   "textures": {
-    "particle": "toxsky:block/seaweed_garbage_block",
-    "down": "toxsky:block/seaweed_garbage_block",
-    "up": "toxsky:block/seaweed_garbage_block",
-    "north": "toxsky:block/seaweed_garbage_block",
-    "south": "toxsky:block/seaweed_garbage_block",
-    "east": "toxsky:block/seaweed_garbage_block",
-    "west": "toxsky:block/seaweed_garbage_block"
+    "all": "toxsky:block/seaweed_garbage_block"
   }
 }
