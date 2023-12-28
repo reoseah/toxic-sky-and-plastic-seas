@@ -1,9 +1,14 @@
-# Fabric Example Mod
+# Toxic Sky & Plastic Seas
 
-## Setup
+Toxic Sky & Plastic Seas is a Minecraft mod made for [Modfest 1.20 "Sky and Sea"](https://modfest.net/1.20).
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+It was planned to add toxic/acid rains that damage entities and their equipment, and plastic pollution in the oceans,
+that players can collect and recycle to make equipment that is immune to the rains.
 
-## License
+Only the ocean garbage islands and simple armor set were implemented so far.
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Garbage islands are generated in the deep ocean and can be mined for Plastic Garbage. 
+Plastic Garbage can be crafted into Recycled Plastic, which can be used to craft Recycled Plastic Armor.
+
+This armor has chainmail level of protection, but diamond-like durability.
+

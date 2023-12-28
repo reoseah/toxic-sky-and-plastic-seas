@@ -32,7 +32,7 @@ public class RecycledPlasticArmorItem extends ArmorItem {
 
         @Override
         public int getEnchantability() {
-            return 15;
+            return 6;
         }
 
         @Override

@@ -3,15 +3,15 @@
 	"id": "toxsky",
 	"version": "${version}",
 	"name": "Toxic Sky & Plastic Seas",
-	"description": "Civilisation disappeared, its poisonous legacy continues to haunt the world.",
+	"description": "Civilisation disappeared, but its poisonous legacy continues to haunt the world.",
 	"authors": [
 		"Reoseah"
 	],
 	"contact": {
-		"homepage": "https://github.com/reoseah/tox-sky-and-plastic-seas",
-		"sources": "https://github.com/reoseah/tox-sky-and-plastic-seas"
+		"homepage": "https://modrinth.com/mod/toxsky",
+		"sources": "https://github.com/reoseah/toxsky"
 	},
-	"license": "MIT",
+	"license": "CC-0",
 	"icon": "assets/toxsky/icon.png",
 	"environment": "*",
 	"entrypoints": {
