@@ -26,12 +26,12 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("RETURN"))
     private void tick(CallbackInfo ci) {
-        if (!this.isRemoved() //
+        if (!this.getWorld().isClient //
+                && !this.isRemoved() //
                 && this.getStack().isDamageable() //
                 && !this.getStack().isIn(ToxSky.IMMUNE_TO_ACID_RAIN) //
                 && this.getWorld().getTime() % 20 == 0 //
                 && this.getWorld().isRaining() //
-                && !this.getWorld().isClient
                 && this.getWorld().getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
                 && this.isBeingRainedOn()) {
             ItemStack stack = this.getStack();
