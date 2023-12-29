@@ -1,6 +1,7 @@
 package io.github.reoseah.toxsky.mixin;
 
 import io.github.reoseah.toxsky.ToxSky;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -26,15 +27,17 @@ public abstract class ItemEntityMixin extends Entity {
 
     @Inject(method = "tick", at = @At("RETURN"))
     private void tick(CallbackInfo ci) {
-        if (!this.getWorld().isClient //
+        ItemStack stack = this.getStack();
+        World world = this.getWorld();
+        if (!world.isClient //
+                && world.getTime() % 20 == 0 //
                 && !this.isRemoved() //
-                && this.getStack().isDamageable() //
-                && !this.getStack().isIn(ToxSky.IMMUNE_TO_ACID_RAIN) //
-                && this.getWorld().getTime() % 20 == 0 //
-                && this.getWorld().isRaining() //
-                && this.getWorld().getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
+                && stack.isDamageable() //
+                && !stack.isIn(ToxSky.IMMUNE_TO_ACID_RAIN) //
+                && EnchantmentHelper.getLevel(ToxSky.ACIDPROOF, stack) == 0
+                && world.isRaining() //
+                && world.getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
                 && this.isBeingRainedOn()) {
-            ItemStack stack = this.getStack();
             stack.setDamage(stack.getDamage() + 1);
             if (stack.getDamage() >= stack.getMaxDamage()) {
                 this.remove(RemovalReason.KILLED);

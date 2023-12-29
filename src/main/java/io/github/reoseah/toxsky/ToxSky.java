@@ -1,6 +1,7 @@
 package io.github.reoseah.toxsky;
 
 import io.github.reoseah.toxsky.block.FloatingGarbageBlock;
+import io.github.reoseah.toxsky.enchantment.AcidproofEnchantment;
 import io.github.reoseah.toxsky.item.RecycledPlasticArmorItem;
 import io.github.reoseah.toxsky.structure.FloatingGarbagePiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandPiece;
@@ -14,6 +15,8 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.*;
@@ -50,7 +53,10 @@ public class ToxSky implements ModInitializer {
     public static final Item RECYCLED_PLASTIC_LEGGINGS = new RecycledPlasticArmorItem(ArmorItem.Type.LEGGINGS, new Item.Settings());
     public static final Item RECYCLED_PLASTIC_BOOTS = new RecycledPlasticArmorItem(ArmorItem.Type.BOOTS, new Item.Settings());
 
+    public static final Enchantment ACIDPROOF = new AcidproofEnchantment();
+
     public static final TagKey<Item> IMMUNE_TO_ACID_RAIN = TagKey.of(RegistryKeys.ITEM, new Identifier("toxsky", "immune_to_acid_rain"));
+    public static final TagKey<Item> CANNOT_HAVE_ACIDPROOF_ENCHANTMENT = TagKey.of(RegistryKeys.ITEM, new Identifier("toxsky", "cannot_have_acidproof_enchantment"));
 
     public static final GameRules.Key<GameRules.BooleanRule> CONVERT_RAIN_TO_ACID_RAIN = GameRuleRegistry.register("convertRainToAcidRain", //
             GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false, (server, rule) -> {
@@ -80,6 +86,8 @@ public class ToxSky implements ModInitializer {
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic_leggings", RECYCLED_PLASTIC_LEGGINGS);
         Registry.register(Registries.ITEM, "toxsky:recycled_plastic_boots", RECYCLED_PLASTIC_BOOTS);
 
+        Registry.register(Registries.ENCHANTMENT, "toxsky:acidproof", ACIDPROOF);
+
         ItemGroup group = FabricItemGroup.builder() //
                 .displayName(Text.translatable("itemGroup.toxsky")) //
                 .icon(PLASTIC_GARBAGE::getDefaultStack) //
@@ -95,9 +103,10 @@ public class ToxSky implements ModInitializer {
                     entries.add(RECYCLED_PLASTIC_CHESTPLATE);
                     entries.add(RECYCLED_PLASTIC_LEGGINGS);
                     entries.add(RECYCLED_PLASTIC_BOOTS);
+
+                    entries.add(EnchantedBookItem.forEnchantment(new EnchantmentLevelEntry(ACIDPROOF, 1)));
                 }) //
                 .build();
-
         Registry.register(Registries.ITEM_GROUP, "toxsky:main", group);
 
         Registry.register(Registries.STRUCTURE_TYPE, "toxsky:garbage_island", GarbageIslandStructure.TYPE);
