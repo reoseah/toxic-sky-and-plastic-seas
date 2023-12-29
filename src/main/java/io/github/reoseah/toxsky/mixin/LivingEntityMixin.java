@@ -21,19 +21,18 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "tickMovement")
     public void tickMovement(CallbackInfo info) {
+        LivingEntity living = (LivingEntity) (Object) this;
         if (!this.getWorld().isClient //
                 && this.getWorld().getTime() % 20 == 0 //
                 && this.getWorld().isRaining() //
                 && this.getWorld().getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
                 && this.isBeingRainedOn()) {
             this.damage(this.getWorld().getDamageSources().cactus(), 1F); // TODO damage source
-            if ((Object) this instanceof MobEntity mob) {
-                for (EquipmentSlot slot : EquipmentSlot.values()) {
-                    ItemStack stack = mob.getEquippedStack(slot);
-                    if (stack.isDamageable() //
-                            && !stack.isIn(ToxSky.IMMUNE_TO_ACID_RAIN)) {
-                        stack.damage(1, mob, (entity) -> entity.sendEquipmentBreakStatus(slot));
-                    }
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                ItemStack stack = living.getEquippedStack(slot);
+                if (stack.isDamageable() //
+                        && !stack.isIn(ToxSky.IMMUNE_TO_ACID_RAIN)) {
+                    stack.damage(1, living, (entity) -> entity.sendEquipmentBreakStatus(slot));
                 }
             }
         }
