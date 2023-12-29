@@ -10,5 +10,6 @@
   "item.toxsky.recycled_plastic_helmet": "Recycled Plastic Helmet",
   "item.toxsky.recycled_plastic_chestplate": "Recycled Plastic Chestplate",
   "item.toxsky.recycled_plastic_leggings": "Recycled Plastic Leggings",
-  "item.toxsky.recycled_plastic_boots": "Recycled Plastic Boots"
+  "item.toxsky.recycled_plastic_boots": "Recycled Plastic Boots",
+  "gamerule.convertRainToAcidRain": "Convert Rain to Acid Rain"
 }

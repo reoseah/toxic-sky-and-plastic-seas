@@ -1,6 +1,7 @@
 package io.github.reoseah.toxsky.block;
 
 import com.mojang.serialization.MapCodec;
+import io.github.reoseah.toxsky.ToxSky;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -40,5 +41,4 @@ public class FloatingGarbageBlock extends Block {
         return (floorFluid.getFluid() == Fluids.WATER || floor.getBlock() instanceof IceBlock) //
                 && fluid.getFluid() == Fluids.EMPTY;
     }
-
 }
