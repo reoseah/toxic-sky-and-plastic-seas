@@ -6,19 +6,25 @@ import io.github.reoseah.toxsky.structure.FloatingGarbagePiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandPiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandStructure;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.*;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
+import net.minecraft.world.event.listener.EntityGameEventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +48,8 @@ public class ToxSky implements ModInitializer {
     public static final Item RECYCLED_PLASTIC_CHESTPLATE = new RecycledPlasticArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Settings());
     public static final Item RECYCLED_PLASTIC_LEGGINGS = new RecycledPlasticArmorItem(ArmorItem.Type.LEGGINGS, new Item.Settings());
     public static final Item RECYCLED_PLASTIC_BOOTS = new RecycledPlasticArmorItem(ArmorItem.Type.BOOTS, new Item.Settings());
+
+    public static final TagKey<Item> IMMUNE_TO_ACID_RAIN = TagKey.of(RegistryKeys.ITEM, new Identifier("toxsky", "immune_to_acid_rain"));
 
     public static final GameRules.Key<GameRules.BooleanRule> CONVERT_RAIN_TO_ACID_RAIN = GameRuleRegistry.register("convertRainToAcidRain", //
             GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false, (server, rule) -> {
@@ -95,5 +103,14 @@ public class ToxSky implements ModInitializer {
 
         Registry.register(Registries.STRUCTURE_PIECE, "toxsky:garbage_island", GarbageIslandPiece.TYPE);
         Registry.register(Registries.STRUCTURE_PIECE, "toxsky:floating_garbage", FloatingGarbagePiece.TYPE);
+
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBoolean(server.getGameRules().get(CONVERT_RAIN_TO_ACID_RAIN).get());
+
+            ServerPlayNetworking.send(handler.player, new Identifier("toxsky:convert_rain_to_acid_rain"), buf);
+        });
+
+
     }
 }
