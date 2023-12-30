@@ -18,6 +18,7 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.*;
 import net.minecraft.network.PacketByteBuf;
@@ -58,6 +59,8 @@ public class ToxSky implements ModInitializer {
     public static final TagKey<Item> IMMUNE_TO_ACID_RAIN = TagKey.of(RegistryKeys.ITEM, new Identifier("toxsky", "immune_to_acid_rain"));
     public static final TagKey<Item> CANNOT_HAVE_ACIDPROOF_ENCHANTMENT = TagKey.of(RegistryKeys.ITEM, new Identifier("toxsky", "cannot_have_acidproof_enchantment"));
 
+    public static final TagKey<EntityType<?>> IMMUNE_TO_ACID_RAIN_ENTITIES = TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("toxsky", "immune_to_acid_rain_entities"));
+    
     public static final GameRules.Key<GameRules.BooleanRule> CONVERT_RAIN_TO_ACID_RAIN = GameRuleRegistry.register("convertRainToAcidRain", //
             GameRules.Category.MISC, GameRuleFactory.createBooleanRule(false, (server, rule) -> {
                 PacketByteBuf buf = PacketByteBufs.create();

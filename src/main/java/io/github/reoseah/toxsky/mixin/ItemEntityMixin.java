@@ -6,7 +6,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,6 +31,7 @@ public abstract class ItemEntityMixin extends Entity {
     private void tick(CallbackInfo ci) {
         ItemStack stack = this.getStack();
         World world = this.getWorld();
+        BlockPos pos = this.getBlockPos();
         if (!world.isClient //
                 && world.getTime() % 20 == 0 //
                 && !this.isRemoved() //
@@ -37,7 +40,8 @@ public abstract class ItemEntityMixin extends Entity {
                 && EnchantmentHelper.getLevel(ToxSky.ACIDPROOF, stack) == 0
                 && world.isRaining() //
                 && world.getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
-                && this.isBeingRainedOn()) {
+                && this.isBeingRainedOn() //
+                && world.getBiome(pos).value().getPrecipitation(pos) == Biome.Precipitation.RAIN) {
             stack.setDamage(stack.getDamage() + 1);
             if (stack.getDamage() >= stack.getMaxDamage()) {
                 this.remove(RemovalReason.KILLED);

@@ -10,7 +10,9 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -29,11 +31,15 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at = @At("HEAD"), method = "tickMovement")
     public void tickMovement(CallbackInfo info) {
         LivingEntity living = (LivingEntity) (Object) this;
-        if (!this.getWorld().isClient //
-                && this.getWorld().getTime() % 20 == 0 //
-                && this.getWorld().isRaining() //
-                && this.getWorld().getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
-                && this.isBeingRainedOn()) {
+        World world = this.getWorld();
+        BlockPos pos = this.getBlockPos();
+        if (!world.isClient //
+                && world.getTime() % 20 == 0 //
+                && world.isRaining() //
+                && world.getGameRules().getBoolean(ToxSky.CONVERT_RAIN_TO_ACID_RAIN) //
+                && !this.getType().isIn(ToxSky.IMMUNE_TO_ACID_RAIN_ENTITIES) //
+                && this.isBeingRainedOn() //
+                && world.getBiome(pos).value().getPrecipitation(pos) == Biome.Precipitation.RAIN) {
 
             this.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100, 0));
 
