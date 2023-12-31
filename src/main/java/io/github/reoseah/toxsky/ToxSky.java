@@ -7,7 +7,6 @@ import io.github.reoseah.toxsky.structure.FloatingGarbagePiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandPiece;
 import io.github.reoseah.toxsky.structure.GarbageIslandStructure;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
 import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -17,9 +16,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.*;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registries;
@@ -29,7 +26,6 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
-import net.minecraft.world.event.listener.EntityGameEventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,7 +119,5 @@ public class ToxSky implements ModInitializer {
 
             ServerPlayNetworking.send(handler.player, new Identifier("toxsky:convert_rain_to_acid_rain"), buf);
         });
-
-
     }
 }
