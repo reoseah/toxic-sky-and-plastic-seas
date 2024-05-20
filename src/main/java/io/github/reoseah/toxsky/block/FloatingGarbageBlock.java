@@ -1,8 +1,9 @@
 package io.github.reoseah.toxsky.block;
 
-import com.mojang.serialization.MapCodec;
-import io.github.reoseah.toxsky.ToxSky;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.IceBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
@@ -11,8 +12,9 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 
+@SuppressWarnings("deprecation")
 public class FloatingGarbageBlock extends Block {
-    public static final MapCodec<FloatingGarbageBlock> CODEC = createCodec(FloatingGarbageBlock::new);
+//    public static final MapCodec<FloatingGarbageBlock> CODEC = createCodec(FloatingGarbageBlock::new);
 
     public static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
@@ -20,9 +22,9 @@ public class FloatingGarbageBlock extends Block {
         super(settings);
     }
 
-    public MapCodec<FloatingGarbageBlock> getCodec() {
-        return CODEC;
-    }
+//    public MapCodec<FloatingGarbageBlock> getCodec() {
+//        return CODEC;
+//    }
 
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;

@@ -14,9 +14,9 @@ public class ToxSkyClient implements ClientModInitializer {
                 ToxSky.FLOATING_GARBAGE);
 
         ClientPlayNetworking.registerGlobalReceiver(new Identifier("toxsky:convert_rain_to_acid_rain"), (client, handler, buf, responseSender) -> {
-            client.execute(() -> {
-                boolean value = buf.readBoolean();
+            boolean value = buf.readBoolean();
 
+            client.execute(() -> {
                 ClientWorld world = client.world;
                 if (world != null) {
                     ((ExtendedClientWorld) world).setConvertRainToAcidRain(value);

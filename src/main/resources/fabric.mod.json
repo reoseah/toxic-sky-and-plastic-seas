@@ -32,7 +32,7 @@
   "accessWidener" : "toxsky.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.0",
-		"minecraft": "~1.20.4",
+		"minecraft": "*",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
