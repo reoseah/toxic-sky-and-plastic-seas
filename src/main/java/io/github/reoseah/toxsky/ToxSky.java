@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.Block;
+import net.minecraft.block.MapColor;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.EntityType;
@@ -24,6 +25,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.text.Text;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.GameRules;
 import org.slf4j.Logger;
@@ -32,10 +34,10 @@ import org.slf4j.LoggerFactory;
 public class ToxSky implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("toxsky");
 
-    public static final Block FLOATING_GARBAGE = new FloatingGarbageBlock(Block.Settings.create());
-    public static final Block GARBAGE_BLOCK = new Block(Block.Settings.create().strength(2F));
-    public static final Block SEAWEED_GARBAGE_BLOCK = new Block(Block.Settings.create().strength(2F));
-    public static final Block RECYCLED_PLASTIC_BLOCK = new Block(Block.Settings.create().strength(2F));
+    public static final Block FLOATING_GARBAGE = new FloatingGarbageBlock(Block.Settings.create().mapColor(MapColor.LIGHT_BLUE));
+    public static final Block GARBAGE_BLOCK = new Block(Block.Settings.create().mapColor(MapColor.PINK).strength(2F));
+    public static final Block SEAWEED_GARBAGE_BLOCK = new Block(Block.Settings.create().mapColor(MapColor.GREEN).strength(2F));
+    public static final Block RECYCLED_PLASTIC_BLOCK = new Block(Block.Settings.create().mapColor(DyeColor.ORANGE).strength(2F));
 
     public static final Item PLASTIC_GARBAGE = new PlaceableOnWaterItem(FLOATING_GARBAGE, new Item.Settings()) {
         @Override
