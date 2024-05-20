@@ -1,6 +1,22 @@
 {
   "values": [
-    "#minecraft:undead",
+    "minecraft:zombie_horse",
+    "minecraft:zombie",
+    "minecraft:zombie_villager",
+    "minecraft:zombified_piglin",
+    "minecraft:zoglin",
+    "minecraft:drowned",
+    "minecraft:husk",
+    "minecraft:skeleton",
+    "minecraft:stray",
+    "minecraft:wither_skeleton",
+    "minecraft:skeleton_horse",
+    "minecraft:wither",
+    "minecraft:phantom",
+    {
+      "required": false,
+      "id": "#minecraft:undead"
+    },
     "minecraft:slime",
     "minecraft:enderman"
   ]
