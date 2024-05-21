@@ -1,0 +1,16 @@
+{
+  "itemGroup.toxsky": "毒空秽海",
+  "block.toxsky.floating_garbage": "漂浮的塑料垃圾",
+  "block.toxsky.garbage_block": "塑料垃圾块",
+  "block.toxsky.seaweed_garbage_block": "附藻塑料垃圾块",
+  "block.toxsky.recycled_plastic_block": "再生塑料块",
+  "item.toxsky.plastic_garbage": "塑料垃圾",
+  "item.toxsky.shredded_plastic": "塑料碎片",
+  "item.toxsky.recycled_plastic": "再生塑料",
+  "item.toxsky.recycled_plastic_helmet": "再生塑料头盔",
+  "item.toxsky.recycled_plastic_chestplate": "再生塑料胸甲",
+  "item.toxsky.recycled_plastic_leggings": "再生塑料护腿",
+  "item.toxsky.recycled_plastic_boots": "再生塑料靴子",
+  "enchantment.toxsky.acidproof": "耐酸",
+  "gamerule.convertRainToAcidRain": "将雨水变为酸雨"
+}
